@@ -1,0 +1,21 @@
+{
+  "name": "GRMule/TplDotPhp",
+  "description": "Nacho, nacho man. I want to be a nacho man",
+  "license": "MIT",
+  "keywords": ["nacho"],
+  "authors": [
+    {
+      "name": "Philip Brown",
+      "email": "name@domain.com"
+    }
+  ],
+  "require": {},
+  "require-dev": {
+    "phpunit/phpunit": "4.0.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "GRMule\\TplDotPhp\\": "src"
+    }
+  }
+}
