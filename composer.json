@@ -15,7 +15,7 @@
   },
   "autoload": {
     "psr-4": {
-      "GRMule\\TplDotPhp\\": "src"
+      "grmule\\tpldotphp\\": "src"
     }
   }
 }
