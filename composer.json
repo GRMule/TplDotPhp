@@ -1,12 +1,12 @@
 {
   "name": "GRMule/TplDotPhp",
-  "description": "Nacho, nacho man. I want to be a nacho man",
+  "description": "a simple PHP template helper",
   "license": "MIT",
-  "keywords": ["nacho"],
+  "keywords": ["php", "template"],
   "authors": [
     {
-      "name": "Philip Brown",
-      "email": "name@domain.com"
+      "name": "Chris Baker",
+      "email": "chris.baker.gr@gmail.com"
     }
   ],
   "require": {},
