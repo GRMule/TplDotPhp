@@ -1,5 +1,5 @@
 <?php
-	namespace GRMule\TplDptPhp;
+    namespace grmule\tpldotphp;
 	class TemplateUtilities implements iTemplateUtilities {
         use MinumumUtilities;
 

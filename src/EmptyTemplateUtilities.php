@@ -1,6 +1,6 @@
 <?php
-namespace GRMule\TplDptPhp;
-class EmptyTemplateUtilities implements iTemplateUtilities {
-    use MinumumUtilities;
-}
+    namespace grmule\tpldotphp;
+    class EmptyTemplateUtilities implements iTemplateUtilities {
+        use MinumumUtilities;
+    }
 ?>
