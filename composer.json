@@ -1,5 +1,5 @@
 {
-  "name": "GRMule/tpldotphp",
+  "name": "grmule/tpldotphp",
   "description": "a simple PHP template helper",
   "license": "MIT",
   "keywords": ["php", "template"],
