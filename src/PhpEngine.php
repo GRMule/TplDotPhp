@@ -8,17 +8,20 @@
         private $returnErrors = false;
         private $throwExceptions = false;
         private $sharedData = array();
+        private $extension = 'tpl.php';
 
         public function __construct (
             array $paths,
-            TemplateUtilities $utility = null,
+            iTemplateUtilities $utility = null,
             $returnErrors = false,
-            $throwExceptions = false
+            $throwExceptions = false,
+            $extension = 'tpl.php'
         ){
-            $this->utility = is_object($utility) === true ? $utility : new EmptyTemplateUtilities();
+            $this->utility = is_object($utility) === true ? $utility : new TemplateUtilities();
             $this->paths = $paths;
             $this->returnErrors = $returnErrors;
             $this->throwExceptions = $throwExceptions;
+            $this->extension = $extension;
         }
 
         public function setSharedData($data) {
@@ -32,11 +35,11 @@
         }
 
         public function exists($template, $extraPaths = array()) {
-            return $this->getTemplatePath($template, $extraPaths) === false ? false : true;
+            return $this->getTemplatePath($template, $extraPaths) === false ? true : false;
         }
 
         public function template($template, $data = null, $extraPaths=array()) {
-            if (!$this->exists($template) === false) {
+            if (!$this->exists($template, $extraPaths) === false) {
                 return $this->handleError('RenderEngine: template "' . $template . '" not found');
             }
 
@@ -47,15 +50,16 @@
                 $data = array();
             }
 
+
             $templatePath = $this->getTemplatePath($template, $extraPaths);
 
-            ob_start();
             $engine = $e = $this;
             $utility = $u = $this->utility;
+            $data = array_merge($this->sharedData, $data);
+
+            ob_start();
             $utility->startTemplate($templatePath);
-
             include($templatePath);
-
             $html = ob_get_contents();
             ob_end_clean();
 
@@ -79,7 +83,7 @@
                 $pathList = array_merge($pathList, $extraPaths);
             }
             foreach ($pathList as $path) {
-                $tryPath = realpath($path.DIRECTORY_SEPARATOR.$template);
+                $tryPath = realpath($path.$template.'.'.$this->extension);
                 if (file_exists($tryPath) === true) {
                     return $tryPath;
                 }
